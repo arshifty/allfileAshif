@@ -1,0 +1,39 @@
+
+<html>
+<head>
+
+
+</head>
+
+<body>
+<h3>Donar Registration </h3>
+
+<div class="submit-form">
+
+    <div *ngIf="!submitted">
+
+<form #simpleForm="ngForm" (ngSubmit)="getUserValue(simpleForm.value)">
+
+<input type="text" [(ngModel)]="bloodreg.username"  name="username" placeholder="enter name"> <br>
+<input type="text" [(ngModel)]="bloodreg.age" name="age" placeholder="enter age"> <br>
+<input type="text" [(ngModel)]="bloodreg.address" name="address" placeholder="enter address"> <br>
+<input type="text" [(ngModel)]="bloodreg.password" name="password" placeholder="enter password"> <br>
+
+<button>Submit</button>
+
+</form>
+
+    </div>
+
+
+    <div *ngIf="submitted">
+        <h4>You submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newTutorial()">Add</button>
+      </div>
+
+
+
+</div>
+
+</body>
+</html>

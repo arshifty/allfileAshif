@@ -1,0 +1,126 @@
+
+    {{ registrationForm.value | json }}
+    <form [formGroup]="registrationForm"  (ngSubmit)="onSubmit()" >
+      <table>
+        <thead></thead>
+        <tbody>
+          <tr>
+            <td>Username</td>
+            <td>
+              <div class="form-group">
+                <input formControlName="userName"    type="text" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" /> 
+                
+                <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                  <div *ngIf="f.userName.errors.required">First Name is required</div>
+              </div>
+
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Enter Number</td>
+            <td>
+              <div class="form-group">
+                <input formControlName="val" type="number"  class="form-control" />
+                <br> <span class="error" *ngIf="val && val.invalid && (val.dirty || val.touched)" >Contact  is invalid</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td>
+              <div class="form-group">
+                <input formControlName="password"  type="password"  class="form-control"  />
+                <br> <span class="error" *ngIf="password && password.invalid && (password.dirty || password.touched)" >password  is invalid</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Confirm Password</td>
+            <td>
+              <div class="form-group">
+                <input formControlName="confirmPassword" type="password" class="form-control" />
+                <br> <span class="error" *ngIf="confirmPassword && confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" >password  is invalid</span>
+               <small> status : {{matchedPassword}} </small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td>
+              <div class="form-group">
+                <input formControlName="city" type="text"  class="form-control" />
+                <br> <span class="error" *ngIf="city && city.invalid && (city.dirty || city.touched)" >City  is invalid</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Country</td>
+            <td>
+              <div class="form-group">
+                <input formControlName="country" type="text" class="form-control" />
+                <br> <span class="error" *ngIf="country && country.invalid && (country.dirty || country.touched)" >country  is invalid</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Code</td>
+            <td>
+              <div class="form-group">
+                <input formControlName="code" type="text" class="form-control"/>
+                <br> <span class="error" *ngIf="code && code.invalid && (code.dirty || code.touched)" >code  is invalid</span>
+              </div>
+            </td>
+          </tr>      
+        </tbody>
+      </table>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+
+
+
+
+  onSubmit() {
+    this.submitted = true;
+    
+    if (this.registrationForm.invalid) {
+      alert("Please Fill the whole form");
+      return;
+    } else {
+      alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.registrationForm.value));
+      if ( this.registrationForm.value["password"] === this.registrationForm.value["confirmPassword"] ) {
+        alert(" Password Matched "); 
+        this.matchedPassword  = "Password  Matched";       
+        console.log(this.registrationForm.value);
+        let data:User={
+          username: this.registrationForm.value.userName,
+          email: this.registrationForm.value.email,
+        }
+      } else {
+        this.submitted = false;
+        if (!this.submitted) {
+         // alert(" Password Not Matched");
+         this.matchedPassword  = "Password Not Matched";
+          console.log(this.registrationForm.value);
+        }
+      }
+    }
+  }
+  
+  
+  from an interface 
+
+let data:User={
+          username: this.registrationForm.value.userName,
+          email: this.registrationForm.value.email,
+        }
+		
+		
+interface User{
+  username: string,
+  email: string,
+}
+
+
+ <br> <span class="error" *ngIf="registrationForm.controls['userName'] userName && userName.invalid && (userName.dirty || userName.touched)" >User Name is invalid</span>		

@@ -1,0 +1,32 @@
+>> Angular
+#day82 app
+cd Desktop
+cd ashif
+cd first82
+cd day82
+
+#angularmodal app
+cd Desktop
+cd ashif
+cd first82
+cd angularmodal
+
+#day162
+cd Desktop
+cd ashif
+cd first82
+cd day162
+......................
+
+>>nodejs
+#aaa
+cd Desktop
+cd ashif
+cd nodejs
+cd aaa
+
+#JsAsyncCallbackPromise
+cd Desktop
+cd ashif
+cd nodejs
+cd JsAsyncCallbackPromise
